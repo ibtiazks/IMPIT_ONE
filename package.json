@@ -1,0 +1,24 @@
+{
+  "name": "impitone-dashboard",
+  "version": "1.0.0",
+  "description": "IMPITONE Dashboard",
+  "keywords": ["react", "starter"],
+  "main": "src/index.js",
+  "dependencies": {
+    "leaflet": "1.9.4",
+    "lucide-react": "0.263.1",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react-leaflet": "4.2.1",
+    "react-scripts": "5.0.1",
+    "recharts": "2.12.0",
+    "@react-leaflet/core": "3.0.0"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "browserslist": [">0.2%", "not dead", "not op_mini all"]
+}
