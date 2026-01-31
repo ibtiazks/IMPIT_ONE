@@ -60,7 +60,7 @@ const HRPayroll = ({ activeView }) => {
       </div>
 
       {/* Navigation Tabs */}
-      <div className="flex overflow-x-auto pb-2 gap-2 custom-scrollbar">
+      {/* <div className="flex overflow-x-auto pb-2 gap-2 custom-scrollbar">
         {TABS.map((tab) => (
           <button
             key={tab.id}
@@ -79,9 +79,10 @@ const HRPayroll = ({ activeView }) => {
             {tab.label}
           </button>
         ))}
-      </div>
+      </div> */}
 
       {/* Content Area */}
+      
       <div className="min-h-[500px]">
         {internalTab === "directory" && <EmployeeDirectory />}
         {internalTab === "database" && <EmployeeDatabase />}{" "}
@@ -100,6 +101,7 @@ const HRPayroll = ({ activeView }) => {
           "profit-dash",
         ].includes(internalTab) && <ProfitShare activeTab={internalTab} />}
       </div>
+
     </div>
   );
 };
