@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Users,
   Calendar,
@@ -24,6 +24,17 @@ import OrgChart from "./OrgChart";
 import ProfitShare from "./ProfitShare";
 import EmployeeDatabase from "./EmployeeDatabase"; // <--- NEW IMPORT
 
+
+ const sectionTitleMap = {
+  "hr-directory": "Employee Directory",
+  "hr-database": "Employee Database",
+  "hr-attendance-upload": "Upload Attendance",
+  "hr-attendance-log": "Attendance Log",
+  "hr-payroll": "Payroll Center",
+  "hr-hierarchy": "Org Chart",
+  "hr-wo-profit": "WO Profit Calc",
+  "hr-profit-dash": "Profit Dashboard",
+};
 const TABS = [
   { id: "directory", label: "Employee Directory", icon: Users },
   { id: "database", label: "Employee Database", icon: Database }, // <--- NEW TAB
@@ -40,70 +51,44 @@ const TABS = [
 ];
 
 const HRPayroll = ({ activeView }) => {
-  const [internalTab, setInternalTab] = useState(activeView || "directory");
+  const [internalTab, setInternalTab] = useState(activeView || "hr-directory");
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (activeView) setInternalTab(activeView);
   }, [activeView]);
 
   return (
     <div className="space-y-6">
-      {/* Header */}
+      {/* Section Header */}
       <div>
-        <h1 className="text-2xl font-extrabold text-[#030F1D] dark:text-white">
-          HR & Payroll Center
-        </h1>
-        <p className="text-slate-500 dark:text-slate-400 text-sm mt-1">
-          Manage workforce, attendance, payroll, and profit sharing
-          distributions.
-        </p>
+        <h2 className="text-2xl font-extrabold text-[#030F1D] dark:text-white">
+          {sectionTitleMap[internalTab]}
+        </h2>
       </div>
 
-      {/* Navigation Tabs */}
-      {/* <div className="flex overflow-x-auto pb-2 gap-2 custom-scrollbar">
-        {TABS.map((tab) => (
-          <button
-            key={tab.id}
-            onClick={() => setInternalTab(tab.id)}
-            className={`flex items-center gap-2 px-4 py-2.5 rounded-lg text-sm font-bold whitespace-nowrap transition-all ${
-              internalTab === tab.id
-                ? "bg-[#030F1D] text-white shadow-lg shadow-blue-900/20"
-                : "bg-white dark:bg-slate-900 text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-800"
-            }`}
-          >
-            <tab.icon
-              className={`w-4 h-4 ${
-                internalTab === tab.id ? "text-orange-500" : "text-slate-400"
-              }`}
-            />
-            {tab.label}
-          </button>
-        ))}
-      </div> */}
-
-      {/* Content Area */}
-      
+      {/* Content */}
       <div className="min-h-[500px]">
-        {internalTab === "directory" && <EmployeeDirectory />}
-        {internalTab === "database" && <EmployeeDatabase />}{" "}
-        {/* <--- NEW RENDER */}
-        {internalTab === "attendance-upload" && <AttendanceUpload />}
-        {internalTab === "attendance-log" && <AttendanceLog />}
-        {internalTab === "payroll" && <PayrollCenter />}
-        {internalTab === "hierarchy" && <OrgChart />}
-        {/* Profit Share Modules */}
-        {[
-          "wo-profit",
-          "analyst-share",
-          "rvm-share",
-          "admin-share",
-          "rvm-final",
-          "profit-dash",
-        ].includes(internalTab) && <ProfitShare activeTab={internalTab} />}
-      </div>
+        {internalTab === "hr-directory" && <EmployeeDirectory />}
+        {internalTab === "hr-database" && <EmployeeDatabase />}
+        {internalTab === "hr-attendance-upload" && <AttendanceUpload />}
+        {internalTab === "hr-attendance-log" && <AttendanceLog />}
+        {internalTab === "hr-payroll" && <PayrollCenter />}
+        {internalTab === "hr-hierarchy" && <OrgChart />}
 
+        {[
+          "hr-wo-profit",
+          "hr-analyst-share",
+          "hr-rvm-share",
+          "hr-admin-share",
+          "hr-rvm-final",
+          "hr-profit-dash",
+        ].includes(internalTab) && (
+          <ProfitShare activeTab={internalTab} />
+        )}
+      </div>
     </div>
   );
 };
+
 
 export default HRPayroll;

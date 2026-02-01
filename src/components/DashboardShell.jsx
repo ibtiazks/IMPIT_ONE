@@ -179,7 +179,8 @@ const DashboardShell = ({ onSignOut }) => {
     if (activeModule.startsWith("ops-"))
       return <Operations activeView={activeModule.replace("ops-", "")} />;
     if (activeModule.startsWith("hr-"))
-      return <HRPayroll activeView={activeModule.replace("hr-", "")} />;
+      return <HRPayroll activeView={activeModule} />;
+
 
     return (
       <div className="flex flex-col items-center justify-center h-96 text-slate-400 bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 border-dashed animate-fade-in transition-colors">
@@ -349,10 +350,13 @@ const DashboardShell = ({ onSignOut }) => {
                 <Menu className="w-5 h-5" />
               </button>
               <h1 className="hidden sm:block text-lg font-bold text-[#030F1D] dark:text-white">
-                {navItems
-                  .flatMap((i) => [i, ...(i.children || [])])
-                  .find((n) => n.id === activeModule)?.label || "Overview"}
+                {activeModule.startsWith("hr-") 
+                ? "HR & Payroll Center"
+                : navItems
+                .flatMap((i) => [i, ...(i.children || [])])
+                .find((n) => n.id === activeModule)?.label || "Overview"}
               </h1>
+
             </div>
             <div className="flex items-center gap-3 sm:gap-4">
               <button
