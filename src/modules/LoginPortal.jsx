@@ -461,7 +461,7 @@ export default function LoginPortal({ onLogin }) {
                   </div>
                 </div>
 
-                <div className="flex gap-3 mb-8">
+                {/* <div className="flex gap-3 mb-8">
                   <button
                     onClick={() => setLoginMethod("email")}
                     className={`flex-1 py-3 text-sm font-bold rounded-xl transition-all duration-300 flex items-center justify-center gap-2 border ${
@@ -483,13 +483,13 @@ export default function LoginPortal({ onLogin }) {
                   >
                     <Phone className="w-4 h-4" /> Phone
                   </button>
-                </div>
+                </div> */}
 
                 <form onSubmit={handleLogin} className="space-y-6">
                   <div className="space-y-2">
                     <label className="text-xs font-bold text-white/80 uppercase tracking-wider ml-1">
                       {loginMethod === "email"
-                        ? "Corporate Email"
+                        ? "Email / UserName"
                         : "Registered Phone"}
                     </label>
 
@@ -577,7 +577,7 @@ export default function LoginPortal({ onLogin }) {
                       </label>
                     </div>
 
-                    <div className="text-sm">
+                    {/* <div className="text-sm">
                       <button
                         type="button"
                         onClick={() => setCurrentView("forgot-password")}
@@ -585,7 +585,7 @@ export default function LoginPortal({ onLogin }) {
                       >
                         Forgot Password?
                       </button>
-                    </div>
+                    </div> */}
                   </div>
 
                   <button
@@ -713,7 +713,7 @@ export default function LoginPortal({ onLogin }) {
                       <div className="space-y-2">
                         <label className="text-xs font-bold text-blue-100/80 uppercase tracking-wider ml-1">
                           {fpMethod === "email"
-                            ? "Corporate Email"
+                            ? "Email / UserName"
                             : "Registered Phone"}
                         </label>
 
